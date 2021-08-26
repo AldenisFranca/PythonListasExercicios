@@ -1,0 +1,7 @@
+How Do Companies Use Spreadsheets?
+
+Many companies use spreadsheets to store information, but they also have other valuable functions.
+Companies use spreadsheets to model and manipulate data sets,
+create graphical visualizations, and inform future planning, and decision make. 
+With popular spreadsheet programs such as Microsoft Excel and alternatives from Libre
+Office and Google Docs, businesses of any size can put spreadsheets to good use.
