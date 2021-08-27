@@ -206,47 +206,66 @@ tenha o mínimo de cédulas possível. Ex: R$ 32,00 → 1 nota de R$ 20, 1 nota 
 de pente.
 """
 
-dinheiro = int(input('Informe quantas cédulas de reais você tem no bolso: R$ '))
+dinheiro = input('Informe um valor em reais para saque (sem centavos): R$ ')
+valor_restante = dinheiro
+valor_restante = float(valor_restante)
 
-if dinheiro % 200 == 0:
-  cedulas = (dinheiro / 200)
-else:
-  if dinheiro % 10 == 1:
-    cedMen = ' 1 Garça e 3 Tartaruga(s) de pente '
-  elif dinheiro % 10 == 3:
-    cedMen = ' 1 Garça e 4 Tartaruga(s) de pente '
-  elif dinheiro % 10 == 6:
-    cedMen = ' 3 Tartaruga(s) de pente '
-  elif dinheiro % 10 == 7:
-    cedMen = ' 1 Garça e 1 Tartaruga(s) de pente '
-  elif dinheiro % 10 == 8:
-    cedMen = ' 4 Tartaruga(s) de pente '
-  elif dinheiro % 10 == 9:
-    cedMen = ' 1 Garça e 2 Tartaruga(s) de pente '
-  else:
-    cedMen = ''
-  print('\nVocê tem {} Lobo(s)-guará'.format(cedulas) + cedMen + 'no bolso'.format(cedulas) )
+ced_200 = 0
+ced_100 = 0
+ced_50 = 0
+ced_20 = 0
+ced_10 = 0
+ced_5 = 0
+ced_2 = 0
 
-if dinheiro % 100 == 0:
-  cedulas = (dinheiro / 100)
-  print('\nVocê tem {} Garoupa(s) no bolso.'.format(cedulas))
-elif dinheiro % 50 == 0:
-  cedulas = (dinheiro / 50)
-  print('\nVocê tem {} Onça(s)pintada(s) no bolso.'.format(cedulas))
-elif dinheiro % 20 == 0:
-  cedulas = (dinheiro / 20)
-  print('\nVocê tem {} Mico(s)-leão(ões)-dourado(s) no bolso.'.format(cedulas))
-elif dinheiro % 10 == 0:
-  cedulas = (dinheiro / 10)
-  print('\nVocê tem {} Arara(s) no bolso.'.format(cedulas))
-elif dinheiro % 5 == 0:
-  cedulas = (dinheiro / 5)
-  print('\nVocê tem {} Garça(s) no bolso.'.format(cedulas))
-elif dinheiro % 2 == 0:
-  cedulas = (dinheiro / 2)
-  print('\nVocê tem {} Tartaruga(s) de pente no bolso.'.format(cedulas))
+if valor_restante == 1 or valor_restante == 3 or valor_restante != int(valor_restante):
+  print('\nO caixa não suporta esse valor.')
+
 else:
-   print('\nVocê digitou um valor com centavos ou menor que R$ 2,00. Tente novamente!' )
+  valor_restante = int(valor_restante)
+  print(f'\nO valor de R$ {dinheiro} corresponde a:\n')
+
+  if valor_restante % 2 == 1:
+    ced_5 = 1
+    valor_restante = valor_restante - 5
+
+  if valor_restante >= 200:
+    ced_200 = valor_restante // 200
+    valor_restante = valor_restante - ced_200*200
+    print(f'{ced_200} Lobo(s)-guará.')
+
+  if valor_restante >= 100:
+    ced_100 = valor_restante // 100
+    valor_restante = valor_restante - ced_100*100
+    print(f'{ced_100} Garoupa(s).')
+
+  if valor_restante >= 50:
+    ced_50 = valor_restante // 50
+    valor_restante = valor_restante - ced_50*50
+    print(f'{ced_50} Onça(s)pintada(s).')
+
+  if valor_restante >= 20:
+    ced_20 = valor_restante//20
+    valor_restante = valor_restante - ced_20*20
+    print(f'{ced_20} Mico(s)-leão(ões)-dourado(s).')
+
+  if valor_restante >= 10:
+    ced_10 = valor_restante//10
+    valor_restante = valor_restante - ced_10*10
+    print(f'{ced_10} Arara(s).')
+
+  if valor_restante >= 5 and valor_restante % 5 == 0:
+    ced_5 = valor_restante//5
+    valor_restante = valor_restante - ced_5*5
+    print(f'{ced_5} Garça(s).')
+
+  if int(dinheiro) % 2 == 1:
+    print(f'{ced_5} Garça(s).')
+
+  if valor_restante >= 2:
+    ced_2 = valor_restante//2
+    valor_restante = valor_restante - ced_2*2
+    print(f'{ced_2} Tartaruga(s) de pente.')
 
 """9) Implemente um programa que lê como entrada o preço de custo de um produto e
 o código relativo à categoria do produto. De acordo com a tabela dada a seguir,
